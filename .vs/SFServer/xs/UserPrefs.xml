@@ -1,0 +1,45 @@
+﻿<Properties StartupConfiguration="{334DE3BB-D79A-483A-BFEA-155E72C49ECC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SFServer/Network/Sessions/Session.cs">
+    <Files>
+      <File FileName="SFServer/Singleton.cs" Line="1" Column="8" />
+      <File FileName="SFServer/Network/PolicyServer.cs" Line="62" Column="10" />
+      <File FileName="SFServer/Program.cs" Line="17" Column="25" />
+      <File FileName="SFServer/Network/ActionItem.cs" Line="24" Column="19" />
+      <File FileName="SFServer/Network/ChatServer.cs" Line="62" Column="10" />
+      <File FileName="SFServer/Network/GameServer.cs" Line="69" Column="57" />
+      <File FileName="SFServer/Network/IMessageResponse.cs" Line="15" Column="6" />
+      <File FileName="SFServer/Network/MessageListener.cs" Line="59" Column="10" />
+      <File FileName="SFServer/Network/Seafight/Message.cs" Line="5" Column="5" />
+      <File FileName="SFServer/Network/Seafight/Game/User.cs" Line="1" Column="1" />
+      <File FileName="SFServer/Network/Handlers/GameMessageHandler.cs" Line="62" Column="6" />
+      <File FileName="SFServer/Network/Handlers/ChatMessageHandler.cs" Line="68" Column="6" />
+      <File FileName="SFServer/Network/Handlers/PolicyFileRequestHandler.cs" Line="54" Column="6" />
+      <File FileName="SFServer/Network/Auth/ChatSessionInitializer.cs" Line="13" Column="5" />
+      <File FileName="SFServer/Network/Auth/SessionInitializer.cs" Line="25" Column="6" />
+      <File FileName="SFServer/Commons/MySQL/DatabaseManager.cs" Line="24" Column="1" />
+      <File FileName="SFServer/Commons/Utilities.cs" Line="1" Column="1" />
+      <File FileName="SFServer/Commons/MySQL/Models/Model.cs" Line="1" Column="1" />
+      <File FileName="SFServer/Network/Sessions/Session.cs" Line="28" Column="1" />
+      <File FileName="SFServer/Network/Sessions/SessionManager.cs" Line="40" Column="21" />
+      <File FileName="SFServer/Network/Responses/OnVersionRequestResponse.cs" Line="36" Column="10" />
+      <File FileName="SFServer/Network/Seafight/Messages/VersionRequest.cs" Line="21" Column="33" />
+      <File FileName="SFServer/Network/Seafight/Messages/ShipInitCommand.cs" Line="28" Column="13" />
+      <File FileName="SFServer/Network/Seafight/Messages/VisualModifierCommand.cs" Line="16" Column="1" />
+      <File FileName="SFServer/Helper/Global.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SFServer" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.DOServer PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

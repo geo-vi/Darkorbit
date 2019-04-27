@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dapper.Rainbow</name>
+    </assembly>
+    <members>
+        <member name="T:Dapper.Database`1">
+            <summary>
+            Represents a database, assumes all the tables have an Id column named Id
+            </summary>
+            <typeparam name="TDatabase">The type of database this represents.</typeparam>
+        </member>
+        <member name="T:Dapper.Database`1.Table`2">
+            <summary>
+            A database table of type <typeparamref name="T"/> and primary key of type <typeparamref name="TId"/>.
+            </summary>
+            <typeparam name="T">The type of object in this table.</typeparam>
+            <typeparam name="TId">The type of the primary key for this table.</typeparam>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.InsertAsync(System.Object)">
+            <summary>
+            Insert a row into the db asynchronously.
+            </summary>
+            <param name="data">Either DynamicParameters or an anonymous type or concrete type.</param>
+            <returns>The Id of the inserted row.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.UpdateAsync(`2,System.Object)">
+            <summary>
+            Update a record in the DB asynchronously.
+            </summary>
+            <param name="id">The Id of the record to update.</param>
+            <param name="data">The new record.</param>
+            <returns>The number of affeced rows.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.DeleteAsync(`2)">
+            <summary>
+            Asynchronously deletes a record for the DB.
+            </summary>
+            <param name="id">The Id of the record to delete.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.GetAsync(`2)">
+            <summary>
+            Asynchronously gets a record with a particular Id from the DB.
+            </summary>
+            <param name="id">The primary key of the table to fetch.</param>
+            <returns>The record with the specified Id.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.FirstAsync">
+            <summary>
+            Asynchronously gets the first row from this table (order determined by the database provider).
+            </summary>
+            <returns>Data from the first table row.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.AllAsync">
+            <summary>
+            Asynchronously gets the all rows from this table.
+            </summary>
+            <returns>Data from all table rows.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.#ctor(Dapper.Database{`0},System.String)">
+            <summary>
+            Creates a table in the specified database with a given name.
+            </summary>
+            <param name="database">The database this table belongs in.</param>
+            <param name="likelyTableName">The name for this table.</param>
+        </member>
+        <member name="P:Dapper.Database`1.Table`2.TableName">
+            <summary>
+            The name for this table.
+            </summary>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.Insert(System.Object)">
+            <summary>
+            Insert a row into the db
+            </summary>
+            <param name="data">Either DynamicParameters or an anonymous type or concrete type</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.Update(`2,System.Object)">
+            <summary>
+            Update a record in the database.
+            </summary>
+            <param name="id">The primary key of the row to update.</param>
+            <param name="data">The new object data.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.Delete(`2)">
+            <summary>
+            Delete a record for the DB
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.Get(`2)">
+            <summary>
+            Gets a record with a particular Id from the DB 
+            </summary>
+            <param name="id">The primary key of the table to fetch.</param>
+            <returns>The record with the specified Id.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.First">
+            <summary>
+            Gets the first row from this table (order determined by the database provider).
+            </summary>
+            <returns>Data from the first table row.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Table`2.All">
+            <summary>
+            Gets the all rows from this table.
+            </summary>
+            <returns>Data from all table rows.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.ExecuteAsync(System.String,System.Object)">
+            <summary>
+            Asynchronously executes SQL against the current database.
+            </summary>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync``1(System.String,System.Object)">
+            <summary>
+            Asynchronously queries the current database.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <returns>An enumerable of <typeparamref name="T"/> for the rows fetched.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryFirstOrDefaultAsync``1(System.String,System.Object)">
+            <summary>
+            Asynchronously queries the current database for a single record.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <returns>An enumerable of <typeparamref name="T"/> for the rows fetched.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync``3(System.String,System.Func{``0,``1,``2},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a asynchronous multi-mapping query with 2 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync``4(System.String,System.Func{``0,``1,``2,``3},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a asynchronous multi-mapping query with 3 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync``5(System.String,System.Func{``0,``1,``2,``3,``4},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a asynchronous multi-mapping query with 4 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TFourth">The fourth type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync``6(System.String,System.Func{``0,``1,``2,``3,``4,``5},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a asynchronous multi-mapping query with 5 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TFourth">The fourth type in the recordset.</typeparam>
+            <typeparam name="TFifth">The fifth type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryAsync(System.String,System.Object)">
+            <summary>
+            Execute a query asynchronously using .NET 4.5 Task.
+            </summary>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:Dapper.Database`1.QueryMultipleAsync(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn.
+            </summary>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+        </member>
+        <member name="T:Dapper.Database`1.Table`1">
+            <summary>
+            A database table of type <typeparamref name="T"/> and primary key of type <see cref="T:System.Int32"/>.
+            </summary>
+            <typeparam name="T">The type of object in this table.</typeparam>
+        </member>
+        <member name="M:Dapper.Database`1.Table`1.#ctor(Dapper.Database{`0},System.String)">
+            <summary>
+            Creates a table in the specified database with a given name.
+            </summary>
+            <param name="database">The database this table belongs in.</param>
+            <param name="likelyTableName">The name for this table.</param>
+        </member>
+        <member name="M:Dapper.Database`1.Init(System.Data.Common.DbConnection,System.Int32)">
+            <summary>
+            Initializes the database.
+            </summary>
+            <param name="connection">The connection to use.</param>
+            <param name="commandTimeout">The timeout to use (in seconds).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dapper.Database`1.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Begins a transaction in this database.
+            </summary>
+            <param name="isolation">The isolation level to use.</param>
+        </member>
+        <member name="M:Dapper.Database`1.CommitTransaction">
+            <summary>
+            Commits the current transaction in this database.
+            </summary>
+        </member>
+        <member name="M:Dapper.Database`1.RollbackTransaction">
+            <summary>
+            Rolls back the current transaction in this database.
+            </summary>
+        </member>
+        <member name="M:Dapper.Database`1.CreateTableConstructor(System.Type)">
+            <summary>
+            Gets a table creation function for the specified type.
+            </summary>
+            <param name="tableType">The object type to create a table for.</param>
+            <returns>The function to create the <paramref name="tableType"/> table.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.CreateTableConstructor(System.Type[])">
+            <summary>
+            Gets a table creation function for the specified types.
+            </summary>
+            <param name="tableTypes">The object types to create a table for.</param>
+            <returns>The function to create the <paramref name="tableTypes"/> tables.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Execute(System.String,System.Object)">
+            <summary>
+            Executes SQL against the current database.
+            </summary>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query``1(System.String,System.Object,System.Boolean)">
+            <summary>
+            Queries the current database.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <param name="buffered">Whether to buffer the results.</param>
+            <returns>An enumerable of <typeparamref name="T"/> for the rows fetched.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.QueryFirstOrDefault``1(System.String,System.Object)">
+            <summary>
+            Queries the current database for a single record.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <returns>An enumerable of <typeparamref name="T"/> for the rows fetched.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query``3(System.String,System.Func{``0,``1,``2},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a multi-mapping query with 2 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query``4(System.String,System.Func{``0,``1,``2,``3},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a multi-mapping query with 3 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query``5(System.String,System.Func{``0,``1,``2,``3,``4},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a multi-mapping query with 4 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TFourth">The fourth type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query``6(System.String,System.Func{``0,``1,``2,``3,``4,``5},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Perform a multi-mapping query with 5 input types. 
+            This returns a single type, combined from the raw types via <paramref name="map"/>.
+            </summary>
+            <typeparam name="TFirst">The first type in the recordset.</typeparam>
+            <typeparam name="TSecond">The second type in the recordset.</typeparam>
+            <typeparam name="TThird">The third type in the recordset.</typeparam>
+            <typeparam name="TFourth">The fourth type in the recordset.</typeparam>
+            <typeparam name="TFifth">The fifth type in the recordset.</typeparam>
+            <typeparam name="TReturn">The combined type to return.</typeparam>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="map">The function to map row types to the return type.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="buffered">Whether to buffer the results in memory.</param>
+            <param name="splitOn">The field we should split and read the second object from (default: "Id").</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <returns>An enumerable of <typeparamref name="TReturn"/>.</returns>
+        </member>
+        <member name="M:Dapper.Database`1.Query(System.String,System.Object,System.Boolean)">
+            <summary>
+            Return a sequence of dynamic objects with properties matching the columns
+            </summary>
+            <param name="sql">The SQL to execute.</param>
+            <param name="param">The parameters to use.</param>
+            <param name="buffered">Whether the results should be buffered in memory.</param>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:Dapper.Database`1.QueryMultiple(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn.
+            </summary>
+            <param name="sql">The SQL to execute for this query.</param>
+            <param name="param">The parameters to use for this query.</param>
+            <param name="transaction">The transaction to use for this query.</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout.</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+        </member>
+        <member name="M:Dapper.Database`1.Dispose">
+            <summary>
+            Disposes the current database, rolling back current transactions.
+            </summary>
+        </member>
+        <member name="T:Dapper.IgnorePropertyAttribute">
+            <summary>
+            Specifies whether a property should be ignored for database operations.
+            </summary>
+        </member>
+        <member name="M:Dapper.IgnorePropertyAttribute.#ctor(System.Boolean)">
+            <summary>
+            Specifies whether a property should be ignored for database operations.
+            </summary>
+            <param name="ignore">Whether to ignore this property.</param>
+        </member>
+        <member name="P:Dapper.IgnorePropertyAttribute.Value">
+            <summary>
+            Whether to ignore this property.
+            </summary>
+        </member>
+        <member name="T:Dapper.Snapshotter">
+            <summary>
+            Snapshots an object for comparison later.
+            </summary>
+        </member>
+        <member name="M:Dapper.Snapshotter.Start``1(``0)">
+            <summary>
+            Starts the snapshot of an objec by making a copy of the current state.
+            </summary>
+            <typeparam name="T">The type of object to snapshot.</typeparam>
+            <param name="obj">The object to snapshot.</param>
+            <returns>The snapshot of the object.</returns>
+        </member>
+        <member name="T:Dapper.Snapshotter.Snapshot`1">
+            <summary>
+            A snapshot of an object's state.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Dapper.Snapshotter.Snapshot`1.#ctor(`0)">
+            <summary>
+            Creates a snapshot from an object.
+            </summary>
+            <param name="original">The original object to snapshot.</param>
+        </member>
+        <member name="T:Dapper.Snapshotter.Snapshot`1.Change">
+            <summary>
+            A holder for listing new values of changes fields and properties.
+            </summary>
+        </member>
+        <member name="P:Dapper.Snapshotter.Snapshot`1.Change.Name">
+            <summary>
+            The name of the field or property that changed.
+            </summary>
+        </member>
+        <member name="P:Dapper.Snapshotter.Snapshot`1.Change.NewValue">
+            <summary>
+            The new value of the field or property.
+            </summary>
+        </member>
+        <member name="M:Dapper.Snapshotter.Snapshot`1.Diff">
+            <summary>
+            Does a diff between the original object and the current state.
+            </summary>
+            <returns>The list of the fields changes in the object.</returns>
+        </member>
+        <member name="T:Dapper.SqlCompactDatabase`1">
+            <summary>
+            A SQL Compact specific <see cref="T:Dapper.Database`1"/> implementation.
+            </summary>
+            <typeparam name="TDatabase">The type of database.</typeparam>
+        </member>
+        <member name="T:Dapper.SqlCompactDatabase`1.SqlCompactTable`1">
+            <summary>
+            A SQL Compact specific table, which handles the syntax correctly across operations.
+            </summary>
+            <typeparam name="T">The type in the table.</typeparam>
+        </member>
+        <member name="M:Dapper.SqlCompactDatabase`1.SqlCompactTable`1.#ctor(Dapper.Database{`0},System.String)">
+            <summary>
+            Creates a table for a SQL Compact database.
+            </summary>
+            <param name="database"></param>
+            <param name="likelyTableName"></param>
+        </member>
+        <member name="M:Dapper.SqlCompactDatabase`1.SqlCompactTable`1.Insert(System.Object)">
+            <summary>
+            Insert a row into the db
+            </summary>
+            <param name="data">Either DynamicParameters or an anonymous type or concrete type</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dapper.SqlCompactDatabase`1.Init(System.Data.Common.DbConnection)">
+            <summary>
+            Initializes the databases.
+            </summary>
+            <param name="connection">The connection to use.</param>
+            <returns>The newly created database.</returns>
+        </member>
+    </members>
+</doc>
